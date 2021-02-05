@@ -5,15 +5,6 @@ String.prototype.reverse = function reverse() {
   return Array.from(this).reverse().join("");
 }
 
-String.prototype.blank = function blank() {
-  return !(!!this.length || !!this.match(/\S+/));
-}
-// console.log("test".blank())
-
-Array.prototype.last = function last() {
-  return this.slice(-1)[0];
-}
-
 // defines a phrase object
 function Phrase(content) {
   this.content = content;
@@ -42,16 +33,3 @@ function Phrase(content) {
 String.prototype.palindrome = function palindrome() {
   return new Phrase(this).palindrome();
 }
-
-// // Defines a translatedPhrase object
-// function TranslatedPhrase(content, translation) {
-//   this.content = content;
-//   this.translation = translation;
-
-//   this.processedContent = function processedContent() {
-//     return this.processor(this.translation);
-//   }
-// }
-
-// TranslatedPhrase.prototype = new Phrase();
-
