@@ -1,35 +1,25 @@
-module.export = Phrase;
+module.exports = Phrase;
 
-// Adds 'reverse' to all strings;
-String.prototype.reverse = function reverse() {
+// Adds `reverse` to all strings.
+String.prototype.reverse = function() {
   return Array.from(this).reverse().join("");
 }
 
-// defines a phrase object
+// Defines a Phrase object.
 function Phrase(content) {
   this.content = content;
 
   // Returns content processed for palindrome testing.
   this.processedContent = function processedContent() {
-    return this.processor(this.content);
-  }
+    return this.letters().toLowerCase();
+  };
 
-  this.processor = function(string) {
-    return string.toLowerCase();
-  }
-
-  // Returns true for a palindrome, false otherwise.
+  // Returns true if the phrase is a palindrome, false otherwise.
   this.palindrome = function palindrome() {
-    
     return this.processedContent() === this.processedContent().reverse();
   }
 
-  // Returns an all caps version of the phrase with two bangs
-  this.louder = function louder() {
-    return this.content.toUpperCase() + "!!";
+  this.letters = function letters() {
+    return (content.match(/[a-z]/ig) || []).join("");
   }
-}
-
-String.prototype.palindrome = function palindrome() {
-  return new Phrase(this).palindrome();
-}
+};
